@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getAvailableSpots } from "../api";
 import { Link, useLocation } from "react-router-dom";
-import { Navbar } from "../components/booking/Navbar.jsx";
+import '../App.css';
 
 export const OpeningPage = () => {
   const [availableSpots, setAvailableSpots] = useState([]);
   const location = useLocation().pathname;
 
   useEffect(() => {
-    console.log(location);
     getAvailableSpots()
       .then((response) => response.json())
       .then((data) => {
@@ -17,8 +16,12 @@ export const OpeningPage = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-pastel-orange min-h-screen">
-      <Navbar path={location} />
+    <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-pastel-orange min-h-screen">
+      <div className="absolute top-0 left-0 w-full h-full z-0">
+        <div className="shape shape1"></div>
+        <div className="shape shape2"></div>
+        <div className="shape shape3"></div>
+      </div>
       {availableSpots &&
         availableSpots.map(({ area, spots, available }, index) => (
           <CampingInformationCard
@@ -34,7 +37,7 @@ export const OpeningPage = () => {
 
 export const CampingInformationCard = ({ area, spots, availability }) => {
   return (
-    <div className="p-2 lg:w-full lg:max-w-md hover:shadow-lg transition-shadow duration-300">
+    <div className="p-2 lg:w-full lg:max-w-md hover:shadow-lg transition-shadow duration-300 z-10">
       <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
         <div className="mx-auto max-w-xs px-8">
           <p className="text-base font-semibold text-gray-600">Camping area</p>

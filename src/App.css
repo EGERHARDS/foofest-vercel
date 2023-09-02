@@ -51,3 +51,71 @@
       transform: translateX(-100%);
   }
 }
+
+/* App.css or another suitable CSS file */
+
+.shape {
+  position: absolute;
+  background-color: #4C51BF; /* indigo-600 */
+  opacity: 0.5;
+}
+
+.shape1 {
+  top: 10%;
+  left: 5%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  animation: float1 10s infinite alternate;
+}
+
+.shape2 {
+  top: 40%;
+  right: 10%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  animation: float2 12s infinite alternate;
+}
+
+.shape3 {
+  bottom: 10%;
+  left: 20%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  animation: float3 8s infinite alternate;
+}
+
+@keyframes float1 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(100px, 50px); }
+  100% { transform: translate(-50px, -100px); }
+}
+
+@keyframes float2 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-70px, 100px); }
+  100% { transform: translate(80px, -60px); }
+}
+
+@keyframes float3 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-120px, -70px); }
+  100% { transform: translate(90px, 80px); }
+}
+
+.custom-link {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+  font-size: x-large;
+  font-weight: 600;
+  margin-bottom: 0%;
+  
+}
+
+.custom-link:hover {
+  color:#4C51BF;
+  background-color: rgb(255, 255, 255); /* or whatever your pastel-orange color code is */
+}

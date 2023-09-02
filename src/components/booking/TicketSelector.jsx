@@ -1,15 +1,18 @@
 import React from "react";
 import { useState } from "react";
+import {twoPersonCount, threePersonCount, setTwoPersonCount, setThreePersonCount} from "./AccomSelector"
 
 function TicketSelector({ onAddToCart }) {
   const [standardCount, setStandardCount] = useState(0);
   const [eliteCount, setEliteCount] = useState(0);
+  const [twoPersonCount, setTwoPersonCount] = useState(0);
+  const [threePersonCount, setThreePersonCount] = useState(0);
 
   const handleAddToCartClick = () => {
     onAddToCart(standardCount, eliteCount);
   };
   return (
-    <div className="flex">
+    <div className="flex text-indigo-600 text-3xl font-semibold p-4">
       {/* Standard Ticket Counter */}
       <div className="mr-4">
         <p className="text-sm mb-2">Standard</p>
@@ -47,7 +50,7 @@ function TicketSelector({ onAddToCart }) {
       </div>
       <button
         onClick={handleAddToCartClick}
-        className="flex text-3xl border-solid border-4 w-fit items-center justify-center p-4 "
+        className="flex text-3xl text-indigo-600 font-semibold border-solid border-4 w-fit items-center justify-center p-4 hover:bg-indigo-600 hover:text-white hover:border-indigo-600"
       >
         Update Cart
       </button>

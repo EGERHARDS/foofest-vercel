@@ -1,41 +1,53 @@
+import { Link, useLocation } from "react-router-dom";
+import '../../App.css';
 
 const navText = ['Home', 'Tickets', 'Contact']
 
-export const Navbar = ({path}) => {
+export const Navbar = () => {
+  const location = useLocation();
+
+  // Don't render the Navbar on the Homepage
+  if (location.pathname === '/home') {
+    return null;
+  }
+
   return (
     <nav className="navbar">
       <div className="logo bg-indigo-600 border-radius-32 flex w-auto h-32 justify-center">
-        <img src="/logo-foo.png" alt="logo"/>
+        <a href="/home" className="logo bg-indigo-600 border-radius-32 flex w-auto h-32 justify-center"><img src="/logo-foo.png" alt="logo"/></a>
       </div>
-      <div className="links flex flex-col justify-center ">
-
+      <div className="links flex flex-col justify-center bg-indigo-600 py-2 px-2">
         {navText.map((text, index) => (
-
-          <NavButton text={text} path={path} key={index}/>
+          <NavButton text={text} key={index} currentPath={location.pathname}/>
         ))}
-        {/* <button className="flex text-white text-6xl text-left justify-start font-semibold pt-4 bg-transparent hover:text-indigo-600 transition-colors duration-300 w-full text-center mb-0">
-          <a href="/">Home</a>
-        </button>
-
-        <button className="flex text-white text-6xl justify-center font-semibold bg-transparent hover:text-indigo-600 transition-colors duration-300 w-full text-center mb-0">
-          <a href="/">Tickets</a>
-        </button>
-        <button className="flex text-white text-6xl text-right justify-end font-semibold bg-transparent hover:text-indigo-600 transition-colors duration-300 w-full text-center mb-0">
-          <a href="/">Contact</a>
-        </button> */}
       </div>
     </nav>
   );
 };
 
-const NavButton = ({text, path}) => {
+export const NavButton = ({ text, currentPath }) => {
+  const textLower = text.toLowerCase();
+  const isActive = currentPath === '/' + textLower;
 
-  const textLower = text.toLowerCase()
+  if (text === 'Contact') {
     return (
-      <button 
-      style={path === '/' + textLower ? {color: '#6366F1'} : {color: 'white'}}
-      className="flex text-white text-6xl text-right justify-end font-semibold bg-transparent hover:text-indigo-600 transition-colors duration-300 w-full text-center mb-0">
-      <a href={"/" +textLower}>{text}</a>
-    </button>
-    )
+      <a 
+        href="https://egerhards.github.io/portfolio/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="custom-link"
+      >
+        {text}
+      </a>
+    );
+  }
+
+  return (
+    <Link 
+    to={"/" + textLower} 
+    className="custom-link"
+>
+    {text}
+</Link>
+  );
 }

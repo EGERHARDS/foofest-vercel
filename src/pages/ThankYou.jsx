@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 
-export const Homepage = () => {
+export const thankYouMessage = () => {
   return (
     <div className="relative h-screen bg-indigo-600">
       <div className="absolute inset-0 marquee opacity-20 z-0">
